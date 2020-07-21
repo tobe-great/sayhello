@@ -1,3 +1,4 @@
+#!/usr/bin/env python 
 # -*- coding: utf-8 -*-
 """
     :author: Grey Li (李辉)
@@ -8,18 +9,18 @@
 import os
 import sys
 
+import pymysql
 from sayhello import app
 
 # SQLite URI compatible
-WIN = sys.platform.startswith('win')
-if WIN:
-    prefix = 'sqlite:///'
-else:
-    prefix = 'sqlite:////'
-
-
-dev_db = prefix + os.path.join(os.path.dirname(app.root_path), 'data.db')
+#WIN = sys.platform.startswith('win')
+#if WIN:
+#    prefix = 'sqlite:///'
+#else:
+#    prefix = 'sqlite:////'
+#dev_db = prefix + os.path.join(os.path.dirname(app.root_path), 'data.db')
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'secret string')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI', dev_db)
+#SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI', dev_db)
+SQLALCHEMY_DATABASE_URI=f"mysql+pymysql://root:fasfsai@#4xgvfds@127.0.0.1:3306/sayhello?charset=utf8"
